@@ -1,199 +1,307 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Beauty Salon Anetta</title>
+/* ─────────────────────────────
+   APPLE PRO MAX SALON DESIGN
+───────────────────────────── */
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-
-<style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family: "Inter", sans-serif;
+:root {
+  --plum: #2D1B2E;
+  --rose: #E8C5D8;
+  --blush: #F4DAEA;
+  --cream: #FAF6F0;
+  --gold: #C9A96E;
+  --gold-lt: #E4CEAD;
+  --text: #3A2535;
+  --muted: #7A6070;
+  --white: #FFFFFF;
 }
 
-body{
-  background:#0b0b0f;
-  color:#fff;
-  overflow-x:hidden;
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* HERO */
-.hero{
-  height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  position:relative;
+html {
+  scroll-behavior: smooth;
 }
 
-.hero h1{
-  font-size:64px;
-  letter-spacing:-2px;
+body {
+  background: var(--cream);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
-.hero p{
-  margin-top:15px;
-  font-size:18px;
-  opacity:.7;
+/* ───────── NAV (APPLE GLASS) ───────── */
+
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 48px;
+  background: transparent;
+  transition: all .5s cubic-bezier(.2,.8,.2,1);
 }
 
-.btn{
-  margin-top:30px;
-  padding:14px 28px;
-  border-radius:999px;
-  border:none;
-  background:white;
-  color:black;
-  font-weight:600;
-  cursor:pointer;
-  transition:.3s;
+nav.scrolled {
+  background: rgba(45,27,46,.65);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  padding: 14px 48px;
+  box-shadow: 0 10px 40px rgba(0,0,0,.18);
 }
 
-.btn:hover{
-  transform:scale(1.05);
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  letter-spacing: .12em;
+  color: var(--white);
+  text-decoration: none;
 }
 
-/* SECTIONS */
-section{
-  padding:120px 10%;
+.nav-links {
+  display: flex;
+  gap: 36px;
+  list-style: none;
 }
 
-.title{
-  font-size:42px;
-  margin-bottom:40px;
-  opacity:0;
+.nav-links a {
+  color: rgba(255,255,255,.75);
+  text-decoration: none;
+  font-size: .78rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  transition: .3s;
 }
 
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:20px;
+.nav-links a:hover {
+  color: var(--gold-lt);
 }
 
-.card{
-  background:rgba(255,255,255,0.06);
-  border:1px solid rgba(255,255,255,0.1);
-  padding:25px;
-  border-radius:20px;
-  backdrop-filter: blur(10px);
-  opacity:0;
-  transform: translateY(40px);
+/* ───────── HERO (APPLE DEPTH) ───────── */
+
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
 }
 
-.card:hover{
-  transform: translateY(-10px) scale(1.02);
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(160deg, rgba(45,27,46,.75), rgba(45,27,46,.35)),
+    url("https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=1800")
+    center/cover no-repeat;
+  transform: scale(1.05);
+  transition: transform 10s ease;
 }
 
-footer{
-  text-align:center;
-  padding:60px;
-  opacity:.5;
+.hero:hover .hero-bg {
+  transform: scale(1.12);
 }
 
-/* glow */
-.glow{
-  position:absolute;
-  width:600px;
-  height:600px;
-  background:radial-gradient(circle, rgba(255,255,255,0.15), transparent 60%);
-  filter:blur(40px);
+.hero-content {
+  position: relative;
+  z-index: 2;
 }
-</style>
-</head>
 
-<body>
-
-<div class="hero">
-  <div class="glow"></div>
-  <h1>Beauty Salon Anetta</h1>
-  <p>Premium beauty experience</p>
-  <button class="btn" onclick="scrollToSection()">Explore</button>
-</div>
-
-<section id="services">
-  <div class="title">Services</div>
-
-  <div class="grid">
-    <div class="card">Manicure — clean premium nails design</div>
-    <div class="card">Pedicure — comfort & aesthetics</div>
-    <div class="card">Makeup — soft / evening / pro looks</div>
-    <div class="card">Skincare — deep modern care</div>
-  </div>
-</section>
-
-<section>
-  <div class="title">About</div>
-  <div class="card" style="max-width:700px">
-    We create a premium beauty experience focused on elegance, simplicity and perfection.
-  </div>
-</section>
-
-<footer>
-  © 2026 Beauty Salon Anetta
-</footer>
-
-<script>
-gsap.registerPlugin(ScrollTrigger);
-
-// HERO animation
-gsap.from(".hero h1", {
-  opacity:0,
-  y:50,
-  duration:1
-});
-
-gsap.from(".hero p", {
-  opacity:0,
-  y:30,
-  delay:0.3,
-  duration:1
-});
-
-gsap.from(".btn", {
-  opacity:0,
-  scale:0.8,
-  delay:0.6
-});
-
-// sections
-gsap.utils.toArray(".title").forEach(el=>{
-  gsap.to(el,{
-    scrollTrigger:{
-      trigger:el,
-      start:"top 80%"
-    },
-    opacity:1,
-    y:0,
-    duration:1
-  });
-});
-
-gsap.utils.toArray(".card").forEach(el=>{
-  gsap.to(el,{
-    scrollTrigger:{
-      trigger:el,
-      start:"top 85%"
-    },
-    opacity:1,
-    y:0,
-    duration:0.8
-  });
-});
-
-function scrollToSection(){
-  document.getElementById("services").scrollIntoView({behavior:"smooth"});
+.hero-eyebrow {
+  font-size: .7rem;
+  letter-spacing: .3em;
+  color: var(--gold-lt);
+  text-transform: uppercase;
+  opacity: 0;
+  animation: fadeUp .8s .2s forwards;
 }
-</script>
 
-</body>
-</html>
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 300;
+  color: var(--white);
+  line-height: 1.1;
+  margin-top: 16px;
+  opacity: 0;
+  animation: fadeUp .9s .4s forwards;
+}
+
+.hero-title em {
+  color: var(--gold-lt);
+  font-style: italic;
+}
+
+.hero-sub {
+  margin-top: 18px;
+  color: rgba(255,255,255,.75);
+  opacity: 0;
+  animation: fadeUp .9s .6s forwards;
+}
+
+.btn-primary {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 14px 38px;
+  border: 1px solid var(--gold);
+  color: var(--gold-lt);
+  text-transform: uppercase;
+  letter-spacing: .15em;
+  font-size: .8rem;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  transition: .4s;
+}
+
+.btn-primary:hover {
+  background: var(--gold);
+  color: var(--plum);
+}
+
+/* ───────── SECTIONS ───────── */
+
+.section {
+  padding: 110px 48px;
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+.section-label {
+  font-size: .68rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 300;
+  margin-bottom: 56px;
+}
+
+.section-title em {
+  color: var(--gold);
+  font-style: italic;
+}
+
+/* ───────── SERVICES ───────── */
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 24px;
+}
+
+.service-card {
+  background: white;
+  padding: 40px 32px;
+  border-radius: 14px;
+  box-shadow: 0 10px 40px rgba(0,0,0,.08);
+  transition: .4s;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 60px rgba(0,0,0,.15);
+}
+
+.service-icon {
+  font-size: 2rem;
+  margin-bottom: 16px;
+}
+
+/* ───────── ABOUT ───────── */
+
+.about-strip {
+  display: flex;
+  gap: 64px;
+  padding: 110px 48px;
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+.about-text { flex: 1; }
+
+.about-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.stat-num {
+  font-size: 3rem;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+/* ───────── CONTACT ───────── */
+
+.contact-section {
+  background: var(--blush);
+  padding: 110px 48px;
+  text-align: center;
+}
+
+.btn-insta {
+  background: var(--plum);
+  color: white;
+  padding: 14px 34px;
+  display: inline-flex;
+  gap: 10px;
+  text-decoration: none;
+}
+
+/* ───────── FOOTER ───────── */
+
+footer {
+  background: var(--plum);
+  color: rgba(255,255,255,.5);
+  text-align: center;
+  padding: 30px;
+}
+
+footer span {
+  color: var(--gold);
+}
+
+/* ───────── ANIMATIONS ───────── */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: .8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ───────── MOBILE ───────── */
+
+@media (max-width: 768px) {
+  nav { padding: 16px 24px; }
+  .section { padding: 70px 24px; }
+
+  .about-strip {
+    flex-direction: column;
+  }
+
+  .nav-links {
+    display: none;
+  }
+}
