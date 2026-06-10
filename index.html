@@ -27,6 +27,48 @@ nav.scrolled{background:rgba(45,27,46,.7);backdrop-filter:blur(15px)}
 .service-card{background:#fff;padding:20px;border-radius:12px;margin:10px 0}
 
 footer{background:var(--plum);color:white;text-align:center;padding:20px}
+/* ───── APPLE ANIMATIONS UPGRADE ───── */
+
+html {
+  scroll-behavior: smooth;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all .9s cubic-bezier(.2,.8,.2,1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* smooth hover cards */
+.service-card {
+  transition: transform .5s cubic-bezier(.2,.8,.2,1),
+              box-shadow .5s cubic-bezier(.2,.8,.2,1);
+}
+
+.service-card:hover {
+  transform: translateY(-12px) scale(1.02);
+}
+
+/* hero parallax feel */
+.hero-bg {
+  transform: scale(1.08);
+  transition: transform 8s ease;
+}
+
+.hero:hover .hero-bg {
+  transform: scale(1.15);
+}
+
+/* glass nav upgrade */
+nav.scrolled {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
 </style>
 </head>
 
@@ -58,6 +100,21 @@ footer{background:var(--plum);color:white;text-align:center;padding:20px}
 window.addEventListener("scroll",()=>{
 document.getElementById("nav").classList.toggle("scrolled",window.scrollY>50);
 });
+/* ───── APPLE SCROLL REVEAL ───── */
+
+const items = document.querySelectorAll('.reveal');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, {
+  threshold: 0.12
+});
+
+items.forEach(el => observer.observe(el));
 </script>
 <section class="section" id="works">
   <span class="section-label">Роботи</span>
