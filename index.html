@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beauty Salon Anetta</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+--plum:#2D1B2E;--rose:#E8C5D8;--blush:#F4DAEA;--cream:#FAF6F0;
+--gold:#C9A96E;--gold-lt:#E4CEAD;--text:#3A2535;--white:#fff;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Inter;background:var(--cream);color:var(--text)}
+
+nav{position:fixed;top:0;width:100%;display:flex;justify-content:space-between;padding:20px 40px;z-index:100}
+nav.scrolled{background:rgba(45,27,46,.7);backdrop-filter:blur(15px)}
+
+.hero{height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative}
+.hero-bg{position:absolute;inset:0;background:url("https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=1800") center/cover}
+.hero-content{position:relative;color:white}
+
+.section{padding:100px 20px;max-width:1000px;margin:auto}
+
+.service-card{background:#fff;padding:20px;border-radius:12px;margin:10px 0}
+
+footer{background:var(--plum);color:white;text-align:center;padding:20px}
+</style>
+</head>
+
+<body>
+
+<nav id="nav">
+<div>Anetta</div>
+<div>Menu</div>
+</nav>
+
+<section class="hero">
+<div class="hero-bg"></div>
+<div class="hero-content">
+<h1>Beauty Salon Anetta</h1>
+<p>Краса та стиль</p>
+</div>
+</section>
+
+<section class="section">
+<h2>Послуги</h2>
+<div class="service-card">Манікюр</div>
+<div class="service-card">Брови</div>
+<div class="service-card">Волосся</div>
+</section>
+
+<footer>© 2026 Anetta</footer>
+
+<script>
+window.addEventListener("scroll",()=>{
+document.getElementById("nav").classList.toggle("scrolled",window.scrollY>50);
+});
+</script>
+
+</body>
+</html>
