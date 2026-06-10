@@ -200,6 +200,164 @@ p{
   color:var(--muted);
   font-size:13px;
 }
+
+/* ===== УСЛУГИ ПОРТФОЛИО ===== */
+.services-portfolio {
+  padding: 120px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.services-portfolio h2 {
+  font-family: 'Cormorant Garamond';
+  color: var(--gold);
+  font-size: 38px;
+  font-weight: 300;
+  margin-bottom: 60px;
+  text-align: center;
+  letter-spacing: 0.05em;
+}
+
+.service-item {
+  margin-bottom: 100px;
+}
+
+.service-item:last-child {
+  margin-bottom: 0;
+}
+
+.service-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+  gap: 20px;
+}
+
+.service-header h3 {
+  font-family: 'Cormorant Garamond';
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--text);
+  letter-spacing: 0.03em;
+  margin: 0;
+}
+
+.service-divider {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, var(--gold), transparent);
+  margin-left: 20px;
+}
+
+.service-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 30px;
+  background: linear-gradient(135deg, rgba(201, 169, 110, 0.08) 0%, rgba(201, 169, 110, 0.02) 100%);
+  border-radius: 20px;
+  border: 1px solid rgba(201, 169, 110, 0.15);
+  backdrop-filter: blur(10px);
+}
+
+.gallery-image {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  aspect-ratio: 1/1;
+  background: rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.gallery-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s cubic-bezier(0.33, 0.66, 0.66, 1);
+  display: block;
+}
+
+.gallery-image:hover img {
+  transform: scale(1.12) rotate(1deg);
+}
+
+.gallery-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+}
+
+.gallery-image:hover::after {
+  opacity: 1;
+}
+
+.gallery-image::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 0%, rgba(201, 169, 110, 0.1) 100%);
+  border-radius: 16px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* АДАПТИВ */
+@media (max-width: 768px) {
+  .services-portfolio {
+    padding: 80px 15px;
+  }
+
+  .services-portfolio h2 {
+    font-size: 28px;
+    margin-bottom: 40px;
+  }
+
+  .service-header {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 30px;
+  }
+
+  .service-header h3 {
+    font-size: 22px;
+  }
+
+  .service-divider {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 10px;
+  }
+
+  .service-item {
+    margin-bottom: 60px;
+  }
+
+  .service-gallery {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .services-portfolio h2 {
+    font-size: 24px;
+  }
+
+  .service-header h3 {
+    font-size: 18px;
+  }
+
+  .service-gallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding: 15px;
+  }
+}
 </style>
 </head>
 
@@ -227,16 +385,123 @@ href="https://wa.me/380937565071?text=Привіт!%20Хочу%20записат�
   </div>
 </section>
 
-<section class="section">
+<!-- ===== НОВИЙ БЛОК: ПОСЛУГИ ПОРТФОЛИО ===== -->
+<section class="services-portfolio">
   <h2 class="reveal">Послуги</h2>
 
-  <div class="grid">
-    <div class="card reveal">Манікюр</div>
-    <div class="card reveal">Брови</div>
-    <div class="card reveal">Догляд за волоссям</div>
-    <div class="card reveal">Косметологія</div>
+  <!-- МАНІКЮР -->
+  <div class="service-item reveal">
+    <div class="service-header">
+      <h3>Манікюр</h3>
+      <div class="service-divider"></div>
+    </div>
+    <div class="service-gallery">
+      <div class="gallery-image">
+        <img src="./IMG_2117.jpeg" alt="Манікюр 1">
+      </div>
+      <div class="gallery-image">
+        <img src="./IMG_2118.jpeg" alt="Манікюр 2">
+      </div>
+      <div class="gallery-image">
+        <img src="./IMG_2119.jpeg" alt="Манікюр 3">
+      </div>
+      <div class="gallery-image">
+        <img src="./IMG_2120.jpeg" alt="Манікюр 4">
+      </div>
+      <div class="gallery-image">
+        <img src="./IMG_2121.jpeg" alt="Манікюр 5">
+      </div>
+      <div class="gallery-image">
+        <img src="./IMG_2122.jpeg" alt="Манікюр 6">
+      </div>
+    </div>
+  </div>
+
+  <!-- СТРИЖКИ ТА УКЛАДКИ -->
+  <div class="service-item reveal">
+    <div class="service-header">
+      <h3>Стрижки та укладки</h3>
+      <div class="service-divider"></div>
+    </div>
+    <div class="service-gallery">
+      <div class="gallery-image">
+        <img src="./IMG_2117.jpeg" alt="Стрижка 1">
+      </div>
+      <div class="gallery-image">
+        <img src="./IMG_2118.jpeg" alt="Укладка 1">
+      </div>
+      <div class="gallery-image">
+        <img src="./IMG_2119.jpeg" alt="Стрижка 2">
+      </div>
+      <div class="gallery-image">
+        <img src="./IMG_2120.jpeg" alt="Укладка 2">
+      </div>
+      <div class="gallery-image">
+        <img src="./IMG_2121.jpeg" alt="Стрижка 3">
+      </div>
+      <div class="gallery-image">
+        <img src="./IMG_2122.jpeg" alt="Укладка 3">
+      </div>
+    </div>
+  </div>
+
+  <!-- БРОВИ -->
+  <div class="service-item reveal">
+    <div class="service-header">
+      <h3>Брови</h3>
+      <div class="service-divider"></div>
+    </div>
+    <div class="service-gallery">
+      <div class="gallery-image">
+        <img src="./IMG_2117.jpeg" alt="Брови 1">
+      </div>
+      <div class="gallery-image">
+        <img src="./IMG_2118.jpeg" alt="Брови 2">
+      </div>
+      <div class="gallery-image">
+        <img src="./IMG_2119.jpeg" alt="Брови 3">
+      </div>
+      <div class="gallery-image">
+        <img src="./IMG_2120.jpeg" alt="Брови 4">
+      </div>
+      <div class="gallery-image">
+        <img src="./IMG_2121.jpeg" alt="Брови 5">
+      </div>
+      <div class="gallery-image">
+        <img src="./IMG_2122.jpeg" alt="Брови 6">
+      </div>
+    </div>
+  </div>
+
+  <!-- ДОГЛЯД ЗА ВОЛОССЯМ -->
+  <div class="service-item reveal">
+    <div class="service-header">
+      <h3>Догляд за волоссям</h3>
+      <div class="service-divider"></div>
+    </div>
+    <div class="service-gallery">
+      <div class="gallery-image">
+        <img src="./IMG_2117.jpeg" alt="Догляд 1">
+      </div>
+      <div class="gallery-image">
+        <img src="./IMG_2118.jpeg" alt="Процедура 1">
+      </div>
+      <div class="gallery-image">
+        <img src="./IMG_2119.jpeg" alt="Догляд 2">
+      </div>
+      <div class="gallery-image">
+        <img src="./IMG_2120.jpeg" alt="Процедура 2">
+      </div>
+      <div class="gallery-image">
+        <img src="./IMG_2121.jpeg" alt="Догляд 3">
+      </div>
+      <div class="gallery-image">
+        <img src="./IMG_2122.jpeg" alt="Процедура 3">
+      </div>
+    </div>
   </div>
 </section>
+<!-- ===== КОНЕЦ БЛОКА УСЛУГ ===== -->
 
 <section class="section">
   <h2 class="reveal">Портфоліо</h2>
