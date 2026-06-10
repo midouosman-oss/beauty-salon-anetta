@@ -211,102 +211,94 @@ p{
 .services-portfolio h2 {
   font-family:'Cormorant Garamond';
   color:var(--gold);
-  font-size:42px;
+  font-size:48px;
   font-weight:300;
-  margin-bottom:60px;
+  margin-bottom:80px;
   text-align:center;
   letter-spacing:.08em;
 }
 
-/* ТАБИ МЕНЮ */
-.services-tabs {
-  display:flex;
-  justify-content:center;
-  gap:16px;
-  margin-bottom:60px;
-  flex-wrap:wrap;
+/* ПОСЛУГА СЕКЦІЯ */
+.service-block {
+  margin-bottom:100px;
+  animation:slideUp .8s ease forwards;
+  opacity:0;
 }
 
-.tab-btn {
-  padding:12px 28px;
-  background:rgba(201,169,110,.08);
-  border:1px solid var(--gold);
-  color:var(--gold);
-  border-radius:12px;
-  cursor:pointer;
-  font-size:13px;
-  letter-spacing:.12em;
-  transition:.4s;
-  font-family:Inter;
-  text-transform:uppercase;
-  font-weight:500;
+.service-block:nth-child(1) {
+  animation-delay:0.1s;
 }
 
-.tab-btn:hover,
-.tab-btn.active {
-  background:var(--gold);
-  color:#000;
-  transform:scale(1.05);
+.service-block:nth-child(2) {
+  animation-delay:0.2s;
 }
 
-/* ВКЛАДКИ КОНТЕНТ */
-.tab-content {
-  display:none;
-  animation:fadeIn .6s ease;
+.service-block:nth-child(3) {
+  animation-delay:0.3s;
 }
 
-.tab-content.active {
-  display:block;
+.service-block:nth-child(4) {
+  animation-delay:0.4s;
 }
 
-@keyframes fadeIn {
+@keyframes slideUp {
   from {
     opacity:0;
-    transform:translateY(15px);
+    transform:translateY(40px);
   }
   to {
     opacity:1;
-    transform:none;
+    transform:translateY(0);
   }
 }
 
-/* ЗАГОЛОВОК ГАЛЕРЕИ */
-.gallery-title {
+/* ЗАГОЛОВОК ПОСЛУГИ */
+.service-title {
   font-family:'Cormorant Garamond';
-  font-size:28px;
+  font-size:36px;
   font-weight:300;
   color:var(--text);
-  margin-bottom:40px;
-  text-align:center;
+  margin-bottom:50px;
+  padding-bottom:24px;
+  border-bottom:2px solid var(--gold);
   letter-spacing:.05em;
-  padding-bottom:20px;
-  border-bottom:1px solid rgba(201,169,110,.2);
+  position:relative;
+}
+
+.service-title::before {
+  content:"";
+  position:absolute;
+  bottom:-2px;
+  left:0;
+  height:2px;
+  background:var(--gold);
+  transition:width .6s ease;
 }
 
 /* СЕТКА ПОРТФОЛИО */
 .portfolio-grid {
   display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
-  gap:20px;
-  margin-bottom:60px;
+  grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+  gap:24px;
 }
 
 .portfolio-item {
   position:relative;
-  border-radius:16px;
+  border-radius:18px;
   overflow:hidden;
   aspect-ratio:1;
-  background:rgba(201,169,110,.05);
-  border:1px solid rgba(201,169,110,.15);
-  transition:.5s ease;
+  background:linear-gradient(135deg, rgba(201,169,110,.1), rgba(201,169,110,.05));
+  border:1px solid rgba(201,169,110,.2);
+  transition:.5s cubic-bezier(.4, 0, .2, 1);
   cursor:pointer;
+  box-shadow:0 8px 24px rgba(0,0,0,.2);
 }
 
 .portfolio-item::before {
   content:"";
   position:absolute;
   inset:0;
-  background:rgba(0,0,0,.4);
+  background:rgba(0,0,0,.35);
   transition:.4s ease;
   z-index:2;
 }
@@ -316,9 +308,9 @@ p{
 }
 
 .portfolio-item:hover {
-  transform:scale(1.04);
+  transform:scale(1.06);
   border-color:var(--gold);
-  box-shadow:0 15px 40px rgba(201,169,110,.15);
+  box-shadow:0 20px 50px rgba(201,169,110,.2);
 }
 
 .portfolio-item img {
@@ -326,18 +318,15 @@ p{
   height:100%;
   object-fit:cover;
   display:block;
+  transition:.5s cubic-bezier(.4, 0, .2, 1);
 }
 
 .portfolio-item:hover img {
-  transform:scale(1.08);
+  transform:scale(1.1);
 }
 
 /* ПРЕМИУМ СПЕЙСИНГ */
-.service-section {
-  margin-bottom:80px;
-}
-
-.service-section:last-child {
+.service-block:last-child {
   margin-bottom:0;
 }
 
@@ -350,8 +339,8 @@ p{
   top:0;
   width:100%;
   height:100%;
-  background:rgba(0,0,0,.92);
-  backdrop-filter:blur(8px);
+  background:rgba(0,0,0,.96);
+  backdrop-filter:blur(12px);
 }
 
 .modal.active {
@@ -366,6 +355,7 @@ p{
   max-height:90vh;
   border-radius:16px;
   overflow:hidden;
+  border:1px solid rgba(201,169,110,.3);
 }
 
 .modal-content img {
@@ -380,8 +370,8 @@ p{
   right:20px;
   background:var(--gold);
   border:none;
-  width:40px;
-  height:40px;
+  width:44px;
+  height:44px;
   border-radius:50%;
   cursor:pointer;
   font-size:24px;
@@ -391,34 +381,38 @@ p{
   display:flex;
   align-items:center;
   justify-content:center;
+  font-weight:300;
 }
 
 .modal-close:hover {
-  transform:scale(1.15);
+  transform:scale(1.2);
+  box-shadow:0 10px 30px rgba(201,169,110,.4);
 }
 
 .modal-nav {
   position:absolute;
   top:50%;
   transform:translateY(-50%);
-  background:rgba(201,169,110,.8);
+  background:rgba(201,169,110,.9);
   border:none;
-  width:50px;
-  height:50px;
+  width:56px;
+  height:56px;
   border-radius:50%;
   cursor:pointer;
-  font-size:24px;
+  font-size:28px;
   color:#000;
   z-index:10;
   transition:.3s;
   display:flex;
   align-items:center;
   justify-content:center;
+  font-weight:300;
 }
 
 .modal-nav:hover {
   background:var(--gold);
-  transform:translateY(-50%) scale(1.1);
+  transform:translateY(-50%) scale(1.15);
+  box-shadow:0 12px 36px rgba(201,169,110,.3);
 }
 
 .modal-prev {
@@ -432,33 +426,22 @@ p{
 /* RESPONSIVE */
 @media(max-width:768px) {
   .services-portfolio h2 {
-    font-size:32px;
-    margin-bottom:40px;
+    font-size:36px;
+    margin-bottom:60px;
   }
 
-  .services-tabs {
-    gap:10px;
+  .service-title {
+    font-size:28px;
     margin-bottom:40px;
-  }
-
-  .tab-btn {
-    padding:10px 20px;
-    font-size:12px;
   }
 
   .portfolio-grid {
-    grid-template-columns:repeat(auto-fit, minmax(160px, 1fr));
-    gap:14px;
-    margin-bottom:40px;
+    grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));
+    gap:16px;
   }
 
-  .gallery-title {
-    font-size:22px;
-    margin-bottom:30px;
-  }
-
-  .service-section {
-    margin-bottom:50px;
+  .service-block {
+    margin-bottom:70px;
   }
 }
 
@@ -468,25 +451,28 @@ p{
   }
 
   .services-portfolio h2 {
-    font-size:26px;
+    font-size:28px;
+    margin-bottom:50px;
   }
 
-  .services-tabs {
-    flex-direction:column;
-    gap:8px;
-  }
-
-  .tab-btn {
-    width:100%;
+  .service-title {
+    font-size:24px;
+    margin-bottom:32px;
   }
 
   .portfolio-grid {
-    grid-template-columns:repeat(auto-fit, minmax(120px, 1fr));
-    gap:10px;
+    grid-template-columns:repeat(auto-fit, minmax(140px, 1fr));
+    gap:12px;
   }
 
-  .gallery-title {
-    font-size:18px;
+  .service-block {
+    margin-bottom:50px;
+  }
+
+  .modal-nav {
+    width:48px;
+    height:48px;
+    font-size:20px;
   }
 }
 </style>
@@ -520,118 +506,53 @@ href="https://wa.me/380937565071?text=Привіт!%20Хочу%20записат�
 <section class="services-portfolio reveal">
   <h2>Послуги</h2>
 
-  <!-- ТАБИ -->
-  <div class="services-tabs">
-    <button class="tab-btn active" data-tab="manicure">Манікюр</button>
-    <button class="tab-btn" data-tab="haircuts">Стрижки та укладки</button>
-    <button class="tab-btn" data-tab="eyebrows">Брови</button>
-    <button class="tab-btn" data-tab="haircare">Догляд за волоссям</button>
-  </div>
-
   <!-- МАНІКЮР -->
-  <div class="tab-content active" id="manicure">
-    <div class="service-section">
-      <h3 class="gallery-title">Манікюр</h3>
-      <div class="portfolio-grid">
-        <div class="portfolio-item" onclick="openModal(event, 'manicure')">
-          <img src="./IMG_2117.jpeg" alt="Манікюр 1">
-        </div>
-        <div class="portfolio-item" onclick="openModal(event, 'manicure')">
-          <img src="./IMG_2118.jpeg" alt="Манікюр 2">
-        </div>
-        <div class="portfolio-item" onclick="openModal(event, 'manicure')">
-          <img src="./IMG_2119.jpeg" alt="Манікюр 3">
-        </div>
-        <div class="portfolio-item" onclick="openModal(event, 'manicure')">
-          <img src="./IMG_2120.jpeg" alt="Манікюр 4">
-        </div>
-        <div class="portfolio-item" onclick="openModal(event, 'manicure')">
-          <img src="./IMG_2121.jpeg" alt="Манікюр 5">
-        </div>
-        <div class="portfolio-item" onclick="openModal(event, 'manicure')">
-          <img src="./IMG_2122.jpeg" alt="Манікюр 6">
-        </div>
+  <div class="service-block">
+    <h3 class="service-title">Манікюр</h3>
+    <div class="portfolio-grid">
+      <div class="portfolio-item" onclick="openModal(event, 'manicure')">
+        <img src="./IMG_2117.jpeg" alt="Манікюр 1">
       </div>
-    </div>
-  </div>
-
-  <!-- СТРИЖКИ ТА УКЛАДКИ -->
-  <div class="tab-content" id="haircuts">
-    <div class="service-section">
-      <h3 class="gallery-title">Стрижки та укладки</h3>
-      <div class="portfolio-grid">
-        <div class="portfolio-item" onclick="openModal(event, 'haircuts')">
-          <img src="./IMG_2117.jpeg" alt="Стрижка 1">
-        </div>
-        <div class="portfolio-item" onclick="openModal(event, 'haircuts')">
-          <img src="./IMG_2118.jpeg" alt="Стрижка 2">
-        </div>
-        <div class="portfolio-item" onclick="openModal(event, 'haircuts')">
-          <img src="./IMG_2119.jpeg" alt="Стрижка 3">
-        </div>
-        <div class="portfolio-item" onclick="openModal(event, 'haircuts')">
-          <img src="./IMG_2120.jpeg" alt="Стрижка 4">
-        </div>
-        <div class="portfolio-item" onclick="openModal(event, 'haircuts')">
-          <img src="./IMG_2121.jpeg" alt="Стрижка 5">
-        </div>
-        <div class="portfolio-item" onclick="openModal(event, 'haircuts')">
-          <img src="./IMG_2122.jpeg" alt="Стрижка 6">
-        </div>
+      <div class="portfolio-item" onclick="openModal(event, 'manicure')">
+        <img src="./IMG_2118.jpeg" alt="Манікюр 2">
+      </div>
+      <div class="portfolio-item" onclick="openModal(event, 'manicure')">
+        <img src="./IMG_2119.jpeg" alt="Манікюр 3">
+      </div>
+      <div class="portfolio-item" onclick="openModal(event, 'manicure')">
+        <img src="./IMG_2120.jpeg" alt="Манікюр 4">
       </div>
     </div>
   </div>
 
   <!-- БРОВИ -->
-  <div class="tab-content" id="eyebrows">
-    <div class="service-section">
-      <h3 class="gallery-title">Брови</h3>
-      <div class="portfolio-grid">
-        <div class="portfolio-item" onclick="openModal(event, 'eyebrows')">
-          <img src="./IMG_2117.jpeg" alt="Брови 1">
-        </div>
-        <div class="portfolio-item" onclick="openModal(event, 'eyebrows')">
-          <img src="./IMG_2118.jpeg" alt="Брови 2">
-        </div>
-        <div class="portfolio-item" onclick="openModal(event, 'eyebrows')">
-          <img src="./IMG_2119.jpeg" alt="Брови 3">
-        </div>
-        <div class="portfolio-item" onclick="openModal(event, 'eyebrows')">
-          <img src="./IMG_2120.jpeg" alt="Брови 4">
-        </div>
-        <div class="portfolio-item" onclick="openModal(event, 'eyebrows')">
-          <img src="./IMG_2121.jpeg" alt="Брови 5">
-        </div>
-        <div class="portfolio-item" onclick="openModal(event, 'eyebrows')">
-          <img src="./IMG_2122.jpeg" alt="Брови 6">
-        </div>
+  <div class="service-block">
+    <h3 class="service-title">Брови</h3>
+    <div class="portfolio-grid">
+      <div class="portfolio-item" onclick="openModal(event, 'eyebrows')">
+        <img src="./IMG_2121.jpeg" alt="Брови 1">
+      </div>
+      <div class="portfolio-item" onclick="openModal(event, 'eyebrows')">
+        <img src="./IMG_2122.jpeg" alt="Брови 2">
       </div>
     </div>
   </div>
 
-  <!-- ДОГЛЯД ЗА ВОЛОССЯМ -->
-  <div class="tab-content" id="haircare">
-    <div class="service-section">
-      <h3 class="gallery-title">Догляд за волоссям</h3>
-      <div class="portfolio-grid">
-        <div class="portfolio-item" onclick="openModal(event, 'haircare')">
-          <img src="./IMG_2117.jpeg" alt="Процедура волос 1">
-        </div>
-        <div class="portfolio-item" onclick="openModal(event, 'haircare')">
-          <img src="./IMG_2118.jpeg" alt="Процедура волос 2">
-        </div>
-        <div class="portfolio-item" onclick="openModal(event, 'haircare')">
-          <img src="./IMG_2119.jpeg" alt="Процедура волос 3">
-        </div>
-        <div class="portfolio-item" onclick="openModal(event, 'haircare')">
-          <img src="./IMG_2120.jpeg" alt="Процедура волос 4">
-        </div>
-        <div class="portfolio-item" onclick="openModal(event, 'haircare')">
-          <img src="./IMG_2121.jpeg" alt="Процедура волос 5">
-        </div>
-        <div class="portfolio-item" onclick="openModal(event, 'haircare')">
-          <img src="./IMG_2122.jpeg" alt="Процедура волос 6">
-        </div>
+  <!-- СТРИЖКИ ТА ДОГЛЯД ЗА ВОЛОССЯМ -->
+  <div class="service-block">
+    <h3 class="service-title">Стрижки та догляд за волоссям</h3>
+    <div class="portfolio-grid">
+      <div class="portfolio-item" onclick="openModal(event, 'haircare')">
+        <img src="./IMG_2117.jpeg" alt="Стрижка 1">
+      </div>
+      <div class="portfolio-item" onclick="openModal(event, 'haircare')">
+        <img src="./IMG_2118.jpeg" alt="Стрижка 2">
+      </div>
+      <div class="portfolio-item" onclick="openModal(event, 'haircare')">
+        <img src="./IMG_2119.jpeg" alt="Стрижка 3">
+      </div>
+      <div class="portfolio-item" onclick="openModal(event, 'haircare')">
+        <img src="./IMG_2120.jpeg" alt="Стрижка 4">
       </div>
     </div>
   </div>
@@ -660,24 +581,24 @@ href="https://wa.me/380937565071?text=Привіт!%20Хочу%20записат�
   </a>
 </section>
 
-<!-- МОДАЛЬНОЕ ОКНО ДЛЯ ПРОСМОТРА ПОЛНОГО РАЗМЕРА -->
+<!-- МОДАЛЬНЕ ВІКНО ДЛЯ ПЕРЕГЛЯДУ ПОВНОГО РОЗМІРУ -->
 <div class="modal" id="imageModal">
   <button class="modal-close" onclick="closeModal()">×</button>
   <div class="modal-content">
-    <img id="modalImage" src="" alt="Полное изображение">
+    <img id="modalImage" src="" alt="Повне зображення">
   </div>
   <button class="modal-nav modal-prev" onclick="prevImage()">❮</button>
   <button class="modal-nav modal-next" onclick="nextImage()">❯</button>
 </div>
 
 <script>
-// НАВИГАЦИЯ
+// НАВІГАЦІЯ
 window.addEventListener("scroll",()=>{
   document.getElementById("nav")
   .classList.toggle("scrolled",window.scrollY>60);
 });
 
-// REVEAL АНИМАЦИЯ
+// REVEAL АНІМАЦІЯ
 const items=document.querySelectorAll(".reveal");
 const io=new IntersectionObserver(e=>{
   e.forEach(x=>{
@@ -686,22 +607,7 @@ const io=new IntersectionObserver(e=>{
 });
 items.forEach(i=>io.observe(i));
 
-// ТАБИ ФУНКЦИОНАЛНОСТЬ
-document.querySelectorAll(".tab-btn").forEach(btn => {
-  btn.addEventListener("click", function() {
-    const tabId = this.getAttribute("data-tab");
-    
-    // УБРАТЬ АКТИВНЫЙ КЛАСС У ВСЕХ КНОПОК И КОНТЕНТА
-    document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
-    document.querySelectorAll(".tab-content").forEach(c => c.classList.remove("active"));
-    
-    // ДОБАВИТЬ АКТИВНЫЙ КЛАСС
-    this.classList.add("active");
-    document.getElementById(tabId).classList.add("active");
-  });
-});
-
-// МОДАЛЬНЫЕ ОКНА
+// МОДАЛЬНІ ВІКНА
 let currentModal = null;
 let currentImageIndex = 0;
 
@@ -736,12 +642,12 @@ function prevImage() {
   }
 }
 
-// ЗАКРЫТЬ МОДАЛ ЕСЛИ НАЖАТЬ НА ПУСТОЕ МЕСТО
+// ЗАКРИТИ МОДАЛЬ ЯКЩО НАТИСНУТИ НА ПУСТЕ МІСЦЕ
 document.getElementById("imageModal").addEventListener("click", function(e) {
   if (e.target === this) closeModal();
 });
 
-// ЗАКРЫТЬ МОДАЛ НА ESC
+// ЗАКРИТИ МОДАЛЬ НА ESC
 document.addEventListener("keydown", function(e) {
   if (e.key === "Escape") closeModal();
   if (e.key === "ArrowRight") nextImage();
