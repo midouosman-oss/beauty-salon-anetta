@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Beauty Salon Anetta — манікюр, брови, волосся та професійний догляд">
 <title>Beauty Salon Anetta</title>
+
 <style>
 *{
 margin:0;
@@ -11,11 +13,17 @@ padding:0;
 box-sizing:border-box;
 font-family:Arial,sans-serif;
 }
+
+html {
+scroll-behavior:smooth;
+}
+
 body{
 background:#fff;
 color:#333;
 line-height:1.6;
 }
+
 .hero{
 height:100vh;
 background:linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),
@@ -29,14 +37,17 @@ text-align:center;
 padding:20px;
 color:white;
 }
+
 .hero-content h1{
 font-size:3rem;
 margin-bottom:15px;
 }
+
 .hero-content p{
 font-size:1.2rem;
 margin-bottom:25px;
 }
+
 .btn{
 display:inline-block;
 padding:14px 28px;
@@ -46,21 +57,25 @@ text-decoration:none;
 border-radius:30px;
 font-weight:bold;
 }
+
 section{
 padding:60px 20px;
 max-width:1100px;
 margin:auto;
 }
+
 .section-title{
 text-align:center;
 font-size:2rem;
 margin-bottom:40px;
 }
+
 .services{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 gap:20px;
 }
+
 .card{
 background:#fff7fa;
 padding:25px;
@@ -68,23 +83,27 @@ border-radius:20px;
 text-align:center;
 box-shadow:0 5px 15px rgba(0,0,0,.08);
 }
+
 .gallery{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:15px;
 }
+
 .gallery img{
 width:100%;
 height:260px;
 object-fit:cover;
 border-radius:15px;
 }
+
 .contact{
 background:#fff7fa;
 border-radius:20px;
 padding:30px;
 text-align:center;
 }
+
 footer{
 background:#222;
 color:white;
@@ -92,6 +111,7 @@ text-align:center;
 padding:25px;
 margin-top:50px;
 }
+
 .instagram{
 display:inline-block;
 margin-top:15px;
@@ -99,9 +119,22 @@ color:#e1306c;
 font-weight:bold;
 text-decoration:none;
 }
+
+/* Адаптивність */
+@media (max-width: 600px) {
+.hero-content h1{
+font-size:2rem;
+}
+
+.hero-content p{
+font-size:1rem;
+}
+}
 </style>
 </head>
+
 <body>
+
 <section class="hero">
 <div class="hero-content">
 <h1>Beauty Salon Anetta ✨</h1>
@@ -109,41 +142,55 @@ text-decoration:none;
 <a class="btn" href="#contact">Записатися</a>
 </div>
 </section>
+
 <section>
 <h2 class="section-title">Наші послуги</h2>
+
 <div class="services">
 <div class="card">
 <h3>💅 Манікюр</h3>
 <p>Класичний, комбінований та сучасний дизайн.</p>
 </div>
+
 <div class="card">
 <h3>👁 Брови та вії</h3>
 <p>Корекція, фарбування та ламінування.</p>
 </div>
+
 <div class="card">
 <h3>💇‍♀️ Волосся</h3>
 <p>Стрижки, фарбування та догляд.</p>
 </div>
+
 <div class="card">
 <h3>✨ Догляд</h3>
 <p>Професійні процедури для краси та відновлення.</p>
 </div>
 </div>
 </section>
+
 <section>
 <h2 class="section-title">Наші роботи</h2>
+
 <div class="gallery">
-<img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?q=80&w=800">
-<img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=800">
-<img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?q=80&w=800">
-<img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=800">
+<img loading="lazy" src="https://images.unsplash.com/photo-1604654894610-df63bc536371?q=80&w=800" alt="Манікюр робота 1">
+<img loading="lazy" src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=800" alt="Манікюр робота 2">
+<img loading="lazy" src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?q=80&w=800" alt="Брови робота">
+<img loading="lazy" src="https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=800" alt="Волосся робота">
 </div>
 </section>
+
 <section id="contact">
 <div class="contact">
 <h2>Контакти</h2>
-<p>📞 Телефон: +38 (___) ___-__-__</p>
+
+<p>
+📞 Телефон:
+<a href="tel:+380000000000">+38 (000) 000-00-00</a>
+</p>
+
 <p>📍 Адреса: Додайте адресу салону</p>
+
 <a class="instagram"
 href="https://www.instagram.com/beauty_salon_anetta"
 target="_blank">
@@ -151,9 +198,10 @@ Instagram салону
 </a>
 </div>
 </section>
+
 <footer>
 © 2026 Beauty Salon Anetta
 </footer>
+
 </body>
 </html>
-`
