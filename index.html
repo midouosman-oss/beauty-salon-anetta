@@ -11,6 +11,7 @@
 :root{
   --bg:#050507;
   --gold:#C9A96E;
+  --pink:#E8B4C4;
   --text:#f4f4f7;
   --muted:#a1a1ad;
 }
@@ -61,15 +62,23 @@ nav div{
   content:"";
   position:absolute;
   inset:0;
-  background:
-    radial-gradient(circle at top, rgba(201,169,110,.25), transparent 60%),
-    linear-gradient(rgba(0,0,0,.78),rgba(0,0,0,.78)),
+  background:var(--pink);
+  transform:scale(1.1);
+  transition:12s ease;
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.35)),
     url("./IMG_2117.jpeg") center/cover;
   transform:scale(1.1);
   transition:12s ease;
 }
 
-.hero:hover::before{
+.hero:hover::before,
+.hero:hover::after{
   transform:scale(1.16);
 }
 
@@ -82,6 +91,12 @@ h1{
   font-family:'Cormorant Garamond';
   font-size:58px;
   font-weight:300;
+}
+
+.hero-subtitle{
+  margin-top:10px;
+  color:var(--muted);
+  font-size:14px;
 }
 
 p{
@@ -122,6 +137,11 @@ p{
   font-size:12px;
   text-decoration:none;
   z-index:999;
+  transition:.3s;
+}
+
+.float:hover{
+  transform:scale(1.1);
 }
 
 /* SECTIONS */
@@ -136,7 +156,14 @@ p{
   color:var(--gold);
   font-size:34px;
   font-weight:300;
-  margin-bottom:20px;
+  margin-bottom:40px;
+}
+
+.section-description{
+  font-size:14px;
+  color:var(--muted);
+  margin-bottom:30px;
+  line-height:1.6;
 }
 
 /* GRID */
@@ -165,7 +192,12 @@ p{
   gap:10px;
 }
 
-.gallery img{
+.gallery.large{
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+}
+
+.gallery img,
+.gallery video{
   width:100%;
   height:180px;
   object-fit:cover;
@@ -174,7 +206,13 @@ p{
   cursor:pointer;
 }
 
-.gallery img:hover{
+.gallery.large img,
+.gallery.large video{
+  height:220px;
+}
+
+.gallery img:hover,
+.gallery video:hover{
   transform:scale(1.05);
 }
 
@@ -196,21 +234,68 @@ p{
   padding:100px 20px;
 }
 
+.contact-info{
+  margin:30px 0;
+  font-size:14px;
+  color:var(--muted);
+}
+
+.contact-telegram{
+  margin-top:15px;
+  font-size:13px;
+}
+
+.contact-telegram a{
+  color:var(--gold);
+  text-decoration:none;
+  transition:.3s;
+}
+
+.contact-telegram a:hover{
+  text-decoration:underline;
+}
+
 .small{
   color:var(--muted);
   font-size:13px;
 }
 
-/* ===== ПОСЛУГИ ===== */
-.service-block{
-  margin-bottom:60px;
+/* ABOUT SECTION */
+.about-container{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+  align-items:center;
 }
 
-.service-block h3{
-  font-family:'Cormorant Garamond';
-  font-size:26px;
-  color:#C9A96E;
-  margin-bottom:14px;
+.about-image img{
+  width:100%;
+  border-radius:16px;
+}
+
+.about-text{
+  font-size:14px;
+  line-height:1.8;
+  color:var(--muted);
+}
+
+/* SINGLE IMAGE SECTIONS */
+.single-image-gallery{
+  display:flex;
+  justify-content:center;
+}
+
+.single-image-gallery img{
+  width:100%;
+  max-width:500px;
+  height:auto;
+  border-radius:14px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.single-image-gallery img:hover{
+  transform:scale(1.02);
 }
 
 /* MODAL */
@@ -307,8 +392,8 @@ p{
     font-size:28px;
   }
 
-  .service-block h3 {
-    font-size:22px;
+  .about-container{
+    grid-template-columns:1fr;
   }
 
   .gallery{
@@ -316,26 +401,37 @@ p{
     gap:8px;
   }
 
-  .gallery img{
+  .gallery img,
+  .gallery video{
+    height:150px;
+  }
+
+  .gallery.large img,
+  .gallery.large video{
     height:150px;
   }
 }
 
 @media(max-width:480px) {
+  nav{
+    padding:12px 20px;
+  }
+
+  nav div{
+    font-size:10px;
+  }
+
+  h1{
+    font-size:36px;
+  }
+
   .section{
     padding:60px 16px;
   }
 
   .section h2 {
     font-size:24px;
-  }
-
-  .service-block{
-    margin-bottom:40px;
-  }
-
-  .service-block h3{
-    font-size:20px;
+    margin-bottom:30px;
   }
 
   .gallery{
@@ -343,8 +439,13 @@ p{
     gap:6px;
   }
 
-  .gallery img{
+  .gallery img,
+  .gallery video{
     height:120px;
+  }
+
+  .about-text{
+    font-size:13px;
   }
 }
 </style>
@@ -357,75 +458,124 @@ p{
   <div>Салон краси</div>
 </nav>
 
-<a class="float"
-href="https://wa.me/380937565071?text=Привіт!%20Хочу%20записатися%20в%20салон%20краси%20Аннета%20✨">
+<a class="float" href="https://t.me/anetta11101" target="_blank">
 Записатися в Telegram
 </a>
 
+<!-- 1. ГОЛОВНИЙ ЕКРАН -->
 <section class="hero">
   <div class="hero-content reveal">
     <h1>Салон краси Аннета</h1>
-    <p>Манікюр · Брови · Догляд за волоссям · Косметологія</p>
-
- <a class="btn"
-   href="https://t.me/anetta11101"
-   target="_blank">
-   Записатися в Telegram
-</a>
+    <p class="hero-subtitle">Краса, стиль та професійний догляд</p>
+    <a class="btn" href="https://t.me/anetta11101" target="_blank">
+      Записатися в Telegram
+    </a>
   </div>
 </section>
 
-<!-- ПОСЛУГИ -->
+<!-- 2. ВОЛОССЯ ТА ЗАЧІСКИ -->
 <section class="section">
-  <h2 class="reveal">Послуги</h2>
-
-  <div class="service-block reveal">
-    <h3>💅 Манікюр</h3>
-    <div class="gallery">
-      <img src="./manicure_1.jpg" alt="Манікюр 1" onclick="openModal(event, 'manicure')">
-      <img src="./IMG_2118.jpeg" alt="Манікюр 2" onclick="openModal(event, 'manicure')">
-      <img src="./IMG_2119.jpeg" alt="Манікюр 3" onclick="openModal(event, 'manicure')">
-    </div>
-  </div>
-
-  <div class="service-block reveal">
-    <h3>✨ Брови</h3>
-    <div class="gallery">
-      <img src="./IMG_2120.jpeg" alt="Брови 1" onclick="openModal(event, 'eyebrows')">
-      <img src="./IMG_2121.jpeg" alt="Брови 2" onclick="openModal(event, 'eyebrows')">
-    </div>
-  </div>
-
-  <div class="service-block reveal">
-    <h3>💇‍♀️ Стрижки та волосся</h3>
-    <div class="gallery">
-      <img src="./IMG_2122.jpeg" alt="Стрижка 1" onclick="openModal(event, 'haircuts')">
-      <img src="./IMG_2117.jpeg" alt="Стрижка 2" onclick="openModal(event, 'haircuts')">
-    </div>
+  <h2 class="reveal">Волосся та зачіски</h2>
+  <p class="section-description reveal">Професійний догляд та стильні зачіски для вас</p>
+  
+  <div class="gallery large reveal">
+    <img src="./hair_1.jpg" alt="Волосся 1" onclick="openModal(event, 'hair')">
+    <img src="./hair_2.jpg" alt="Волосся 2" onclick="openModal(event, 'hair')">
+    <img src="./hair_3.jpg" alt="Волосся 3" onclick="openModal(event, 'hair')">
+    <video controls style="cursor: auto;" onclick="event.stopPropagation()">
+      <source src="./hair-video.mp4" type="video/mp4">
+      Ваш браузер не підтримує відео
+    </video>
   </div>
 </section>
 
+<!-- 3. ВІЇ -->
 <section class="section">
-  <h2 class="reveal">Портфоліо</h2>
-
-  <div class="gallery">
-    <img src="./IMG_2117.jpeg" onclick="openModal(event, 'portfolio')">
-    <img src="./IMG_2118.jpeg" onclick="openModal(event, 'portfolio')">
-    <img src="./manicure_1.jpg" onclick="openModal(event, 'portfolio')">
-    <img src="./IMG_2120.jpeg" onclick="openModal(event, 'portfolio')">
-    <img src="./IMG_2121.jpeg" onclick="openModal(event, 'portfolio')">
-    <img src="./IMG_2122.jpeg" onclick="openModal(event, 'portfolio')">
+  <h2 class="reveal">Вії</h2>
+  
+  <div class="gallery reveal">
+    <img src="./eyelashes_1.jpg" alt="Вії 1" onclick="openModal(event, 'eyelashes')">
+    <img src="./eyelashes_2.jpg" alt="Вії 2" onclick="openModal(event, 'eyelashes')">
+    <img src="./eyelashes_3.jpg" alt="Вії 3" onclick="openModal(event, 'eyelashes')">
   </div>
 </section>
 
+<!-- 4. БРОВИ -->
+<section class="section">
+  <h2 class="reveal">Брови</h2>
+  
+  <div class="gallery reveal">
+    <img src="./eyebrows_1.jpg" alt="Брови 1" onclick="openModal(event, 'eyebrows')">
+  </div>
+</section>
+
+<!-- 5. МАНІКЮР -->
+<section class="section">
+  <h2 class="reveal">Манікюр</h2>
+  
+  <div class="single-image-gallery reveal">
+    <img src="./manicure_1.jpg" alt="Манікюр" onclick="openModal(event, 'manicure')">
+  </div>
+</section>
+
+<!-- 6. ПЕДИКЮР -->
+<section class="section">
+  <h2 class="reveal">Педикюр</h2>
+  
+  <div class="single-image-gallery reveal">
+    <img src="./pedicure_1.jpg" alt="Педикюр" onclick="openModal(event, 'pedicure')">
+  </div>
+</section>
+
+<!-- 7. ЧОЛОВІЧІ СТРИЖКИ -->
+<section class="section">
+  <h2 class="reveal">Чоловічі стрижки</h2>
+  
+  <div class="single-image-gallery reveal">
+    <img src="./mens_haircut_1.jpg" alt="Чоловіча стрижка" onclick="openModal(event, 'mens')">
+  </div>
+</section>
+
+<!-- 8. ПРОФЕСІЙНА КОСМЕТИКА -->
+<section class="section">
+  <h2 class="reveal">Професійна косметика</h2>
+  
+  <div class="single-image-gallery reveal">
+    <img src="./cosmetics_display.jpg" alt="Професійна косметика" onclick="openModal(event, 'cosmetics')">
+  </div>
+  
+  <p class="section-description reveal" style="text-align:center; margin-top:30px;">
+    У салоні використовуються професійні засоби для догляду та краси.
+  </p>
+</section>
+
+<!-- 9. ПРО САЛОН -->
+<section class="section">
+  <h2 class="reveal">Про салон</h2>
+  
+  <div class="about-container reveal">
+    <div class="about-image">
+      <img src="./salon_about.jpg" alt="Про салон">
+    </div>
+    <div class="about-text">
+      Ми створюємо образи, які підкреслюють вашу красу та індивідуальність.
+    </div>
+  </div>
+</section>
+
+<!-- 10. КОНТАКТИ -->
 <section class="contact reveal">
-  <h2>Готові до краси?</h2>
-  <p class="small">Запис у WhatsApp за 1 клік</p>
-
-  <a class="btn"
-  href="https://wa.me/380937565071?text=Привіт!%20Хочу%20записатися%20✨">
-    Записатися зараз
-  </a>
+  <h2>Контакти</h2>
+  
+  <div class="contact-info">
+    <p><strong>Telegram:</strong> @anetta11101</p>
+  </div>
+  
+  <div class="contact-telegram">
+    <a href="https://t.me/anetta11101" target="_blank" class="btn">
+      Записатися в Telegram
+    </a>
+  </div>
 </section>
 
 <!-- МОДАЛЬНЕ ВІКНО -->
@@ -460,7 +610,7 @@ let currentImageIndex = 0;
 
 function openModal(event, serviceType) {
   const img = event.target;
-  const gallery = img.closest(".gallery");
+  const gallery = img.closest(".gallery") || img.closest(".single-image-gallery");
   const images = Array.from(gallery.querySelectorAll("img"));
   
   currentImageIndex = images.indexOf(img);
@@ -476,14 +626,14 @@ function closeModal() {
 }
 
 function nextImage() {
-  if (currentModal) {
+  if (currentModal && currentModal.length > 1) {
     currentImageIndex = (currentImageIndex + 1) % currentModal.length;
     document.getElementById("modalImage").src = currentModal[currentImageIndex].src;
   }
 }
 
 function prevImage() {
-  if (currentModal) {
+  if (currentModal && currentModal.length > 1) {
     currentImageIndex = (currentImageIndex - 1 + currentModal.length) % currentModal.length;
     document.getElementById("modalImage").src = currentModal[currentImageIndex].src;
   }
