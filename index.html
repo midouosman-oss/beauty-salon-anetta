@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Салон краси Аннета | Одеса | ЖК Одеські Традиції</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#050507;
+  --gold:#C9A96E;
+  --text:#f4f4f7;
+  --muted:#a1a1ad;
+  --accent:#1a1a1c;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family:Inter, sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+  line-height:1.6;
+}
+
+/* NAVIGATION */
+nav{
+  position:fixed;
+  top:0;left:0;right:0;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 5%;
+  z-index:1000;
+  transition:all 0.4s ease;
+}
+
+nav.scrolled{
+  background:rgba(5, 5, 7, 0.95);
+  backdrop-filter:blur(15px);
+  padding:15px 5%;
+  border-bottom:1px solid rgba(201, 169, 110, 0.2);
+}
+
+.logo{
+  font-family:'Cormorant Garamond', serif;
+  font-size:24px;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--gold);
+}
+
+/* HERO SECTION */
+.hero{
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)),
+    url("./IMG_2117.jpeg") center/cover;
+  z-index:1;
+}
+
+.hero-content{
+  position:relative;
+  z-index:10;
+  padding:0 20px;
+}
+
+h1{
+  font-family:'Cormorant Garamond', serif;
+  font-size:clamp(45px, 10vw, 85px);
+  font-weight:300;
+  margin-bottom:15px;
+  line-height:1;
+}
+
+.hero-subtitle{
+  color:var(--muted);
+  font-size:16px;
+  letter-spacing:0.15em;
+  text-transform:uppercase;
+  margin-bottom:40px;
+}
+
+/* BUTTONS */
+.btn{
+  display:inline-block;
+  padding:18px 45px;
+  background:transparent;
+  border:1px solid var(--gold);
+  color:var(--gold);
+  text-decoration:none;
+  font-size:12px;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  transition:all 0.4s ease;
+  cursor:pointer;
+}
+
+.btn:hover{
+  background:var(--gold);
+  color:black;
+}
+
+.float-tg{
+  position:fixed;
+  bottom:30px;
+  right:30px;
+  background:#25D366;
+  color:white;
+  padding:15px 30px;
+  border-radius:50px;
+  font-size:15px;
+  text-decoration:none;
+  z-index:2000;
+  box-shadow:0 10px 25px rgba(0,0,0,0.4);
+  font-weight:500;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  transition:transform 0.3s ease;
+}
+
+.float-tg:hover{
+  transform:scale(1.05);
+}
+
+/* SECTIONS */
+.section{
+  padding:100px 5%;
+  max-width:1400px;
+  margin:0 auto;
+}
+
+.section-header{
+  text-align:center;
+  margin-bottom:60px;
+}
+
+.section-header h2{
+  font-family:'Cormorant Garamond', serif;
+  font-size:48px;
+  color:var(--gold);
+  font-weight:300;
+  margin-bottom:20px;
+}
+
+/* GRID LAYOUTS */
+.about-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  align-items:center;
+}
+
+.about-img img{
+  width:100%;
+  border:1px solid rgba(201, 169, 110, 0.2);
+  padding:10px;
+}
+
+/* TEAM SECTION */
+.team-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+  gap:30px;
+  text-align:center;
+}
+
+.team-member h4{
+  font-family:'Cormorant Garamond', serif;
+  font-size:24px;
+  color:var(--gold);
+  margin-top:15px;
+}
+
+.team-member p{
+  color:var(--muted);
+  font-size:14px;
+  text-transform:uppercase;
+  letter-spacing:0.1em;
+}
+
+/* MAP */
+.map-container{
+  width:100%;
+  height:400px;
+  margin-top:50px;
+  border:1px solid rgba(201, 169, 110, 0.2);
+}
+
+/* CONTACTS */
+.contacts-bg{
+  background:var(--accent);
+  padding:80px 5%;
+  text-align:center;
+}
+
+.contact-info{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:50px;
+  margin-top:40px;
+}
+
+.info-box h4{
+  color:var(--gold);
+  text-transform:uppercase;
+  font-size:12px;
+  margin-bottom:10px;
+}
+
+footer{
+  padding:40px;
+  text-align:center;
+  font-size:12px;
+  color:var(--muted);
+  border-top:1px solid rgba(255,255,255,0.05);
+}
+
+@media (max-width: 900px) {
+  .about-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+
+<body>
+
+<nav id="nav">
+  <div class="logo">Аннета</div>
+  <div style="font-size:10px; letter-spacing:0.1em; text-transform:uppercase;">Odesa Beauty Space</div>
+</nav>
+
+<a class="float-tg" href="https://t.me/anetta11101" target="_blank">
+  Записатися в Telegram
+</a>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <p class="hero-subtitle">ЖК Одеські Традиції | Одеса</p>
+    <h1>Салон краси Аннета</h1>
+    <a class="btn" href="https://t.me/anetta11101">Забронювати візит</a>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="section">
+  <div class="about-grid">
+    <div class="about-img">
+      <img src="./IMG_2174.jpeg" alt="Анетта - власниця салону">
+    </div>
+    <div class="about-content">
+      <h2 style="font-family:'Cormorant Garamond'; font-size:42px; color:var(--gold); margin-bottom:20px;">Історія нашого створення</h2>
+      <p style="font-size:17px; margin-bottom:15px; color:var(--muted);">«Аннета» — це не просто салон, це мрія, втілена в реальность. Власниця салону Анетта відкрила цей простір у 24 роки, щоб дарувати красу та впевненість кожній жінці в Одесі.</p>
+      <p style="font-size:17px; color:var(--muted);">Ми віримо, що правильна техніка та професійний підхід завжди дають неперевершений результат. Наша команда — це сім'я, яка працює заради вашої посмішки.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="section" style="background:rgba(255,255,255,0.02)">
+  <div class="section-header">
+    <h2>Наша Команда</h2>
+    <p>Професіонали, які закохані у свою справу</p>
+  </div>
+  <div class="team-grid">
+    <div class="team-member">
+      <h4>Єлизавета</h4>
+      <p>Майстер зі складних фарбувань</p>
+    </div>
+    <div class="team-member">
+      <h4>Вікторія</h4>
+      <p>Експерт нігтьового сервісу</p>
+    </div>
+    <div class="team-member">
+      <h4>Анетта</h4>
+      <p>Власниця та ідейний натхненник</p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section">
+  <div class="section-header">
+    <h2>Наші Послуги</h2>
+  </div>
+  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:30px;">
+    <div style="background:rgba(255,255,255,0.03); padding:30px; border-left:2px solid var(--gold);">
+      <h3 style="color:var(--gold); font-family:'Cormorant Garamond'; font-size:24px; margin-bottom:15px;">Волосся та Стиль</h3>
+      <p style="color:var(--muted);">Ботокс волосся, складні техніки фарбування, професійні укладки та догляд.</p>
+    </div>
+    <div style="background:rgba(255,255,255,0.03); padding:30px; border-left:2px solid var(--gold);">
+      <h3 style="color:var(--gold); font-family:'Cormorant Garamond'; font-size:24px; margin-bottom:15px;">Нігтьовий сервіс</h3>
+      <p style="color:var(--muted);">Естетичний манікюр, ідеальний педикюр та СПА-процедури для ваших рук.</p>
+    </div>
+    <div style="background:rgba(255,255,255,0.03); padding:30px; border-left:2px solid var(--gold);">
+      <h3 style="color:var(--gold); font-family:'Cormorant Garamond'; font-size:24px; margin-bottom:15px;">Погляд та Обличчя</h3>
+      <p style="color:var(--muted);">Нарощування вій, корекція брів, макіяж та лазерна епіляція.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTS & MAP -->
+<section class="contacts-bg">
+  <h2 style="font-family:'Cormorant Garamond'; font-size:42px; color:var(--gold); font-weight:300;">Завітайте до нас</h2>
+  <div class="contact-info">
+    <div class="info-box">
+      <h4>Адреса</h4>
+      <p>вул. Михайла Грушевського, 30г<br>ЖК «Одеські Традиції»</p>
+    </div>
+    <div class="info-box">
+      <h4>Зв'язок</h4>
+      <p>+380 (93) 756 50 71<br>@beauty_salon_anetta</p>
+    </div>
+    <div class="info-box">
+      <h4>Графік</h4>
+      <p>Щодня: 10:00 — 20:00</p>
+    </div>
+  </div>
+  
+  <!-- GOOGLE MAP IFRAME -->
+  <div class="map-container">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2747.8285645624734!2d30.70613267687864!3d46.47192306583015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40c631757827e873%3A0x66f68e0d4c9d5f5a!2z0YPQuy4g0JzQuNGF0LDRltC70LAg0JPRgNGD0YjQtdCy0YHRjNC60L7Qs9C-LCAzMNCzLCDQntC00LXRgdGB0LAsINCe0LTQtdGB0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsIDY1MDAw!5e0!3m2!1sru!2sua!4v1718195000000!5m2!1sru!2sua" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+
+  <div style="margin-top:50px;">
+    <a class="btn" href="https://t.me/anetta11101">Записатися через Telegram</a>
+  </div>
+</section>
+
+<footer>
+  &copy; 2026 Салон краси Аннета. Одеса. Краса, що надихає.
+</footer>
+
+<script>
+  window.addEventListener('scroll', function() {
+    const nav = document.getElementById('nav');
+    if (window.scrollY > 50) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  });
+</script>
+
+</body>
+</html>
